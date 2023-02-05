@@ -1,11 +1,16 @@
-import { Link, Outlet, useLoaderData } from 'react-router-dom';
-import { getContacts } from '../contacts';
+import { Link, Outlet, useLoaderData, Form } from 'react-router-dom';
+import { getContacts, createContact } from '../contacts';
 
 export const rootLoader = async () => {
   const contacts = await getContacts();
   return {
     contacts,
   };
+};
+
+export const rootAction = async () => {
+  const contacts = await createContact();
+  return { contacts };
 };
 
 export default function Root() {
@@ -16,15 +21,15 @@ export default function Root() {
       <div id="sidebar">
         <h1>React router contacts</h1>
         <div>
-          <form id="search-form" role="search">
+          <Form id="search-form" role="search">
             <input type="search" name="q" id="q" placeholder="Search" aria-label="Search contacts" />
             <div id="search-spinner" aria-hidden hidden={true} />
             <div className="sr-only" aria-live="polite" />
-          </form>
+          </Form>
 
-          <form method="post">
+          <Form method="post">
             <button type="submit">New</button>
-          </form>
+          </Form>
         </div>
 
         <nav>
