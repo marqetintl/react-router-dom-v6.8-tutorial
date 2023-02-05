@@ -1,14 +1,11 @@
-import { Form } from 'react-router-dom';
+import { Form, useLoaderData } from 'react-router-dom';
+import { getContact } from '../contacts';
+
+export const contactLoader = async ({ params }) => getContact(params.contactId);
 
 export default function Contact() {
-  const contact = {
-    first: 'First name',
-    last: 'Last name',
-    avatar: 'https://placekitten.com/g/200/200',
-    twitter: 'handle',
-    notes: 'Some notes',
-    favorite: true,
-  };
+  const contact = useLoaderData();
+
   return (
     <div id="contact">
       <div>
@@ -31,7 +28,7 @@ export default function Contact() {
         {contact.twitter && (
           <p>
             <a href={`https://twitter.com/${contact.twitter}`} target="_blank">
-              {contact.twitter}
+              @{contact.twitter}
             </a>
           </p>
         )}
