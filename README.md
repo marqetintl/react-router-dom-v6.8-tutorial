@@ -1,19 +1,39 @@
 # React Router Dom v6.8 Tutorial
 
-This repo is code from the [React Router Dom v6.4 +](https://reactrouter.com/en/main/start/tutorial) tutorial.
+This repository provides code samples for the React Router Dom v6.8 tutorial, which can be found on the official [React Router website](https://reactrouter.com/en/main/start/tutorial).
 
-The code is organized by branch. The main branch is the final code from the tutorial with little variation. Other branches are code from each step of the tutorial.
+The code is organized by branch; the main branch being the final code from the tutorial with minor modifications.
 
-## Branches
+The branches of this repository include:
 
-1. [Quick setup](https://github.com/marqetintl/react-router-dom-v6.8-tutorial/tree/setup)
+1. [Quick setup](https://github.com/marqetintl/react-router-dom-v6.8-tutorial/tree/setup) - a simple setup to get started.
 
-2. [Adding a router](https://github.com/marqetintl/react-router-dom-v6.8-tutorial/tree/1-adding-a-router)
+2. [Adding a router](https://github.com/marqetintl/react-router-dom-v6.8-tutorial/tree/1-adding-a-router) - demonstrates the process of adding a router to a React application
 
-3. [Adding routes, nested routes](https://github.com/marqetintl/react-router-dom-v6.8-tutorial/tree/2-contact-routes)
+3. [Adding routes and nested routes](https://github.com/marqetintl/react-router-dom-v6.8-tutorial/tree/2-contact-routes) - shows how to add and manage routes in your React application
 
-4. [CRUD ops](https://github.com/marqetintl/react-router-dom-v6.8-tutorial/tree/crud)
+4. [CRUD operations](https://github.com/marqetintl/react-router-dom-v6.8-tutorial/tree/crud) - covers the creation, reading, updating, and deletion of data in your React application
 
-5. [Contextual errors and misc](https://github.com/marqetintl/react-router-dom-v6.8-tutorial/tree/context-errors)
+5. [Contextual errors and miscellaneous topics](https://github.com/marqetintl/react-router-dom-v6.8-tutorial/tree/context-errors) - deals with error handling and miscellaneous features of the React Router Dom library
 
-6. [Search parameters, history stack, JSX routes etc ..](https://github.com/marqetintl/react-router-dom-v6.8-tutorial/tree/get-params)
+6. [Search parameters, history stack, JSX routes, and more.](https://github.com/marqetintl/react-router-dom-v6.8-tutorial/tree/get-params) - covers advanced topics like search parameters, history stack, and JSX routes.
+
+To run the code, you need to clone the repository and install its dependencies
+
+1. Clone the repository using the following command:
+
+```bash
+git clone https://github.com/marqetintl/react-router-dom-v6.8-tutorial react-tutorial && cd react-tutorial
+```
+
+2. Next, install the dependencies:
+
+```bash
+npm install
+```
+
+3. Finally, run the development server:
+
+```bash
+npm run dev
+```
