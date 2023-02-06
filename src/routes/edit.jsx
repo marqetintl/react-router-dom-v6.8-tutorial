@@ -10,6 +10,7 @@ export const editAction = async ({ params, request }) => {
 
 export default function EditContact() {
   const contact = useLoaderData();
+  const navigate = useNavigate();
 
   return (
     <Form method="post" id="contact-form">

@@ -1,11 +1,14 @@
-import { NavLink, Outlet, useLoaderData, Form, redirect, useNavigation } from 'react-router-dom';
+import * as React from 'react';
+import { NavLink, Outlet, useLoaderData, Form, redirect, useNavigation, useSubmit } from 'react-router-dom';
+
 import { getContacts, createContact } from '../contacts';
 
-export const rootLoader = async () => {
-  const contacts = await getContacts();
-  return {
-    contacts,
-  };
+export const rootLoader = async ({ request }) => {
+  const url = new URL(request.url);
+  const q = url.searchParams.get('q');
+  const contacts = await getContacts(q);
+
+  return { contacts, q };
 };
 
 export const rootAction = async () => {
@@ -14,8 +17,20 @@ export const rootAction = async () => {
 };
 
 export default function Root() {
-  const { contacts } = useLoaderData();
+  const { contacts, q } = useLoaderData();
   const navigation = useNavigation();
+  const submit = useSubmit();
+
+  React.useEffect(() => {
+    document.getElementById('q').value = q;
+    if (q) {
+      document.title = `Search results for "${q}"`;
+    } else {
+      document.title = 'React router contacts';
+    }
+  }, [q]);
+
+  const searching = navigation.location && new URLSearchParams(navigation.location.search).has('q');
 
   return (
     <>
@@ -23,8 +38,23 @@ export default function Root() {
         <h1>React router contacts</h1>
         <div>
           <Form id="search-form" role="search">
-            <input type="search" name="q" id="q" placeholder="Search" aria-label="Search contacts" />
-            <div id="search-spinner" aria-hidden hidden={true} />
+            <input
+              required
+              type="search"
+              name="q"
+              defaultValue={q}
+              onChange={(event) => {
+                const isFirstSearch = q == null;
+                submit(event.currentTarget.form, {
+                  replace: !isFirstSearch,
+                });
+              }}
+              id="q"
+              className={searching ? 'loading' : ''}
+              placeholder="Search"
+              aria-label="Search contacts"
+            />
+            <div id="search-spinner" hidden={!searching} aria-hidden />
             <div className="sr-only" aria-live="polite" />
           </Form>
 
